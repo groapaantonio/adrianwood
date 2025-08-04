@@ -284,6 +284,18 @@
     body {
       overflow-x: hidden;
     }
+    /* Animation setup */
+.animate-slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
+}
+
+.animate-slide-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
   </style>
 </head>
 <body>
@@ -314,7 +326,7 @@
     <h2>Gallery</h2>
     <div class="gallery">
       <!-- Repeat for each artwork -->
-      <div class="gallery-item">
+      <div class="gallery-item animate-slide-up">
         <img src="art1.jpg" alt="Mother and Baby wood carving" />
         <div class="gallery-item-content">
           <h3>Mother and Baby</h3>
@@ -332,7 +344,7 @@
         </div>
       </div>
 
-      <div class="gallery-item">
+      <div class="gallery-item animate-slide-up">
         <img src="art2.jpg" alt="Crashing Waves wood carving" />
         <div class="gallery-item-content">
           <h3>Crashing Waves</h3>
@@ -350,7 +362,7 @@
         </div>
       </div>
 
-      <div class="gallery-item">
+      <div class="gallery-item animate-slide-up">
         <img src="art3.jpg" alt="Man's Best Friend wood carving" />
         <div class="gallery-item-content">
           <h3>Man's Best Friend</h3>
@@ -368,7 +380,7 @@
         </div>
       </div>
 
-      <div class="gallery-item">
+      <div class="gallery-item animate-slide-up">
         <img src="art5.jpg" alt="Cottage" />
         <div class="gallery-item-content">
           <h3>Man's Cottage</h3>
@@ -386,7 +398,7 @@
         </div>
       </div>
 
-      <div class="gallery-item">
+      <div class="gallery-item animate-slide-up">
         <img src="art6.jpg" alt="Praying Hands" />
         <div class="gallery-item-content">
           <h3>Praying Hands</h3>
@@ -404,7 +416,7 @@
         </div>
       </div>
 
-      <div class="gallery-item">
+      <div class="gallery-item animate-slide-up">
         <img src="art7.jpg" alt="Old Man" />
         <div class="gallery-item-content">
           <h3>Old Man</h3>
@@ -413,7 +425,7 @@
             class="snipcart-add-item"
             data-item-id="carving-7"
             data-item-name="Old Man"
-            data-item-price="99.99"
+            data-item-price="479.99"
             data-item-url="https://groapaantonio.github.io/adrianwood/"
             data-item-description="Wood carving of an old man sitting and thinking."
           >
@@ -422,7 +434,7 @@
         </div>
       </div>
 
-      <div class="gallery-item">
+      <div class="gallery-item animate-slide-up">
         <img src="art8.jpg" alt="Stumbling Man" />
         <div class="gallery-item-content">
           <h3>Stumbling Man</h3>
@@ -431,7 +443,7 @@
             class="snipcart-add-item"
             data-item-id="carving-8"
             data-item-name="Stumbling Man"
-            data-item-price="99.99"
+            data-item-price="499.99"
             data-item-url="https://groapaantonio.github.io/adrianwood/"
             data-item-description="Wood carving of a man holding onto a post."
           >
@@ -440,7 +452,7 @@
         </div>
       </div>
 
-      <div class="gallery-item">
+      <div class="gallery-item animate-slide-up">
         <img src="art9.jpg" alt="Yellow Bird" />
         <div class="gallery-item-content">
           <h3>Yellow Bird</h3>
@@ -527,8 +539,27 @@
       hamburger.setAttribute('aria-expanded', String(!expanded));
     });
   </script>
+  <script>
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('.animate-slide-up').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
 </body>
 </html>
+
 
 
 
