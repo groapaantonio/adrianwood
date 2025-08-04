@@ -475,30 +475,38 @@
   </section>
 
   <section class="section" id="commission" aria-label="Commission a custom carving or artwork">
-    <h2>Commission</h2>
-    <p>Interested in a custom piece? Please fill out the form below.</p>
-    <form>
-      <label for="name">Name</label>
-      <input id="name" name="name" required placeholder="Your full name" />
-      
-      <label for="email">Email</label>
-      <input id="email" type="email" name="email" required placeholder="Your email address" />
-      
-      <label for="details">Project Details</label>
-      <textarea id="details" name="details" required placeholder="Describe what you'd like commissioned"></textarea>
-      
-      <button type="submit">Send Request</button>
-    </form>
+  <h2>Commission</h2>
+  <p>Interested in a custom piece? Please fill out the form below.</p>
+  
+  <form action="https://formsubmit.co/YOUR@EMAIL.COM" method="POST">
+    <!-- Optional hidden fields -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="box">
+    <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+    
+    <label for="name">Name</label>
+    <input id="name" name="name" required placeholder="Your full name" />
+    
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email" required placeholder="Your email address" />
+    
+    <label for="details">Project Details</label>
+    <textarea id="details" name="details" required placeholder="Describe what you'd like commissioned"></textarea>
+    
+    <button type="submit">Send Request</button>
+  </form>
+</section>
+
   </section>
 
   <section class="section" id="contact" aria-label="Contact information">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:adi@example.com">adi@example.com</a></p>
+    <p>Email: <a href="mailto:whittlinadi@gmail.com">whittlinadi@gmail.com</a></p>
     <p>Phone: (555) 123-4567</p>
   </section>
 
   <footer>
-    <p>&copy; 2025 Adrian Groapa | Whittlin Adi. All rights reserved.</p>
+    <p>&copy;| Whittlin Adi. All rights reserved.</p>
   </footer>
 
   <script src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"></script>
@@ -521,5 +529,6 @@
   </script>
 </body>
 </html>
+
 
 
