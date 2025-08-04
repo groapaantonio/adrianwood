@@ -54,6 +54,7 @@
       gap: 2rem;
       padding: 1rem 0;
       box-shadow: inset 0 -3px 4px #7d5a4f;
+      position: relative;
     }
     nav a, .snipcart-checkout {
       color: white;
@@ -66,6 +67,43 @@
     }
     nav a:hover, .snipcart-checkout:hover {
       background-color: #7d5a4f;
+    }
+
+    /* Hamburger button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-left: 1rem;
+    }
+    .hamburger:focus {
+      outline: none;
+    }
+    .hamburger div {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s linear;
+      position: relative;
+      transform-origin: 1px;
+    }
+
+    /* Toggle hamburger animation */
+    .hamburger.active div:nth-child(1) {
+      transform: rotate(45deg);
+    }
+    .hamburger.active div:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active div:nth-child(3) {
+      transform: rotate(-45deg);
     }
 
     /* Hero */
@@ -195,50 +233,57 @@
       letter-spacing: 0.05em;
       box-shadow: inset 0 3px 4px #a68c6d;
     }
-@media (max-width: 768px) {
-  .hero {
-    height: 180px;
-    border-radius: 0;
-    margin: 0;
-  }
 
-  nav {
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1rem;
-  }
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .hero {
+        height: 180px;
+        border-radius: 0;
+        margin: 0;
+      }
 
-  .gallery {
-    grid-template-columns: 1fr;
-  }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        gap: 0;
+        position: relative;
+      }
 
-  .section {
-    padding: 0 1rem;
-  }
+      nav a, .snipcart-checkout {
+        padding: 0.75rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 0;
+        border-bottom: 1px solid #7d5a4f;
+      }
+      nav a:last-child, .snipcart-checkout:last-child {
+        border-bottom: none;
+      }
 
-  header h1 {
-    font-size: 1.8rem;
-  }
+      /* Hide nav links by default on mobile */
+      nav .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+      }
+      nav .nav-links.active {
+        display: flex;
+      }
 
-  header p {
-    font-size: 1rem;
-  }
+      .hamburger {
+        display: flex;
+      }
+    }
 
-  #commission form {
-    width: 100%;
-    box-sizing: border-box;
-  }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
 
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  body {
-    overflow-x: hidden;
-  }
-}
-
+    body {
+      overflow-x: hidden;
+    }
   </style>
 </head>
 <body>
@@ -248,12 +293,19 @@
   </header>
 
   <nav>
-    <a href="#gallery">Gallery</a>
-    <a href="#about">About</a>
-    <a href="#shop">Shop</a>
-    <a href="#commission">Commission</a>
-    <a href="#contact">Contact</a>
-    <a href="#" class="snipcart-checkout">Cart</a>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+      <div></div>
+      <div></div>
+      <div></div>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#shop">Shop</a>
+      <a href="#commission">Commission</a>
+      <a href="#contact">Contact</a>
+      <a href="#" class="snipcart-checkout">Cart</a>
+    </div>
   </nav>
 
   <div class="hero" aria-label="Wood carving artwork showcase"></div>
@@ -316,7 +368,7 @@
         </div>
       </div>
 
- <div class="gallery-item">
+      <div class="gallery-item">
         <img src="art5.jpg" alt="Cottage" />
         <div class="gallery-item-content">
           <h3>Man's Cottage</h3>
@@ -334,7 +386,7 @@
         </div>
       </div>
 
- <div class="gallery-item">
+      <div class="gallery-item">
         <img src="art6.jpg" alt="Praying Hands" />
         <div class="gallery-item-content">
           <h3>Praying Hands</h3>
@@ -352,130 +404,120 @@
         </div>
       </div>
 
- <div class="gallery-item">
+      <div class="gallery-item">
         <img src="art7.jpg" alt="Old Man" />
         <div class="gallery-item-content">
           <h3>Old Man</h3>
-          <p>Wood carving of an old man.</p>
+          <p>Wood carving of an old man sitting and thinking.</p>
           <button
             class="snipcart-add-item"
             data-item-id="carving-7"
             data-item-name="Old Man"
-            data-item-price="479.99"
+            data-item-price="99.99"
             data-item-url="https://groapaantonio.github.io/adrianwood/"
-            data-item-description="Wood carving of an old man."
+            data-item-description="Wood carving of an old man sitting and thinking."
           >
             Add to cart
           </button>
         </div>
       </div>
 
- <div class="gallery-item">
-        <img src="art8.jpg" alt="Stumbling Man" />
+      <div class="gallery-item">
+        <img src="art8.jpg" alt="Bird" />
         <div class="gallery-item-content">
-          <h3>Stumbling Man</h3>
-          <p>Wood carving of a Stumbling Man.</p>
+          <h3>Bird</h3>
+          <p>Wood carving of a bird on a branch.</p>
           <button
             class="snipcart-add-item"
             data-item-id="carving-8"
-            data-item-name="Stumbling Man"
-            data-item-price="499.99"
+            data-item-name="Bird"
+            data-item-price="99.99"
             data-item-url="https://groapaantonio.github.io/adrianwood/"
-            data-item-description="Wood carving of a man holding onto a pole."
+            data-item-description="Wood carving of a bird on a branch."
           >
             Add to cart
           </button>
         </div>
       </div>
 
- <div class="gallery-item">
-        <img src="art9.jpg" alt="yellow Bird" />
+      <div class="gallery-item">
+        <img src="art9.jpg" alt="Sitting Boy" />
         <div class="gallery-item-content">
-          <h3>Yellow Bird</h3>
-          <p>Wood carving of a yellow bird perched on a branch.</p>
+          <h3>Sitting Boy</h3>
+          <p>Wood carving of a boy sitting on a bench.</p>
           <button
             class="snipcart-add-item"
             data-item-id="carving-9"
-            data-item-name="Yellow Bird"
-            data-item-price="149.99"
+            data-item-name="Sitting Boy"
+            data-item-price="129.99"
             data-item-url="https://groapaantonio.github.io/adrianwood/"
-            data-item-description="Wood painting of a bird resting on a branch."
+            data-item-description="Wood carving of a boy sitting on a bench."
           >
             Add to cart
           </button>
         </div>
       </div>
-
-      <!-- Add more artwork blocks as needed -->
     </div>
   </section>
 
-  <section class="section" id="about" aria-label="About Adrian Groapa">
-    <h2>About Adi</h2>
+  <section class="section" id="about" aria-label="About Whittlin Adi and his art">
+    <h2>About</h2>
     <p>
-      Adi is a passionate woodcarver and artist known for capturing the spirit of nature and humanity in wood. His work spans detailed depictions of flowers, expressive wildlife, and evocative human figures. With decades of experience and a deep connection to traditional craftsmanship, Adrian brings a rustic warmth to every piece. Each piece is hand carved and painted, showcasing his expertise in the arts.
+      Adrian Groapa, known as Whittlin Adi, is a passionate woodcarver specializing in floral, wildlife, and human sculptures. His rustic style brings nature and emotion to life in every piece.
     </p>
   </section>
 
-  <section class="section" id="shop" aria-label="Shop information">
+  <section class="section" id="shop" aria-label="Shop wood carvings and artwork">
     <h2>Shop</h2>
     <p>
-      Interested in purchasing a piece? Use the "Add to cart" buttons in the Gallery or contact us for custom orders and availability.
+      Browse the gallery above to view available carvings. Click "Add to cart" on any item to purchase securely through Snipcart.
     </p>
   </section>
 
- <section class="section" id="commission" aria-label="Commission a custom wood carving or artwork">
-  <h2>Commission Work</h2>
-  <p>If you'd like to commission a custom carving or artwork, please fill out the form below. Adi will personally review your request and get back to you.</p>
-  <form
-    id="commission-form"
-    action="https://formsubmit.co/whittlinadi@gmail.com"
-    method="POST"
-  >
-    <label for="name">Your Name *</label>
-    <input type="text" id="name" name="name" required />
+  <section class="section" id="commission" aria-label="Commission a custom carving or artwork">
+    <h2>Commission</h2>
+    <p>Interested in a custom piece? Please fill out the form below.</p>
+    <form>
+      <label for="name">Name</label>
+      <input id="name" name="name" required placeholder="Your full name" />
+      
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" required placeholder="Your email address" />
+      
+      <label for="details">Project Details</label>
+      <textarea id="details" name="details" required placeholder="Describe what you'd like commissioned"></textarea>
+      
+      <button type="submit">Send Request</button>
+    </form>
+  </section>
 
-    <label for="email">Your Email *</label>
-    <input type="email" id="email" name="email" required />
-
-    <label for="details">Project Details *</label>
-    <textarea
-      id="details"
-      name="details"
-      required
-      placeholder="Describe the artwork or carving you want"
-    ></textarea>
-
-    <!-- Add these hidden inputs to customize Formsubmit -->
-    <input type="hidden" name="_captcha" value="false" />
-    <input type="hidden" name="_next" value="https://groapaantonio.github.io/adrianwood/#commission" />
-    <input type="hidden" name="_template" value="table" />
-
-    <button type="submit">Send Request</button>
-  </form>
-</section>
-
-
-  <section class="section" id="contact" aria-label="Contact Information">
+  <section class="section" id="contact" aria-label="Contact information">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:whittlinadi@gmail.com">whittlinadi@gmail.com</a></p>
-    <p>Phone: +1 (555) 123-4567</p>
+    <p>Email: <a href="mailto:adi@example.com">adi@example.com</a></p>
+    <p>Phone: (555) 123-4567</p>
   </section>
 
   <footer>
-    <p>&copy; 2025 Whittlin Adi Wood Carvings & Artwork</p>
+    <p>&copy; 2025 Adrian Groapa | Whittlin Adi. All rights reserved.</p>
   </footer>
 
-  <!-- Snipcart -->
-  <div hidden id="snipcart" data-api-key="OTQ4ZTNkM2EtMzcwMy00ZTk2LTgxMTctZDUxMjc0NzJmYTQzNjM4ODk5MTYwNzQ4MTIzMDcz"></div>
   <script src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"></script>
+
+  <div hidden id="snipcart" data-api-key="YOUR_PUBLIC_SNIPCART_API_KEY"></div>
+
+  <script>
+    // Hamburger toggle script
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('active');
+
+      // Update aria-expanded for accessibility
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!expanded));
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
