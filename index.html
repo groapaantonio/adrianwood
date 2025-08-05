@@ -48,14 +48,6 @@
 }
 </style>
 
-<div class="zoom-container">
-  <img src="your-image.jpg" alt="Zoomable" class="zoom-image" id="zoomable-img" />
-</div>
-
-<div id="lightbox">
-  <img src="" alt="Zoomed Image" id="lightbox-img" />
-</div>
-
 <script>
 const zoomImage = document.getElementById('zoomable-img');
 const lightbox = document.getElementById('lightbox');
@@ -431,6 +423,13 @@ lightbox.addEventListener('click', () => {
 
   <div class="hero" aria-label="Wood carving artwork showcase"></div>
 
+  <div class="zoom-container">
+  <img src="your-image.jpg" alt="Zoomable" class="zoom-image" id="zoomable-img" />
+</div>
+
+<div id="lightbox">
+  <img src="" alt="Zoomed Image" id="lightbox-img" />
+</div>
   <section class="section" id="gallery" aria-label="Gallery of wood carvings and artwork">
     <h2>Gallery</h2>
     <div class="gallery">
@@ -688,6 +687,7 @@ lightbox.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 
 
