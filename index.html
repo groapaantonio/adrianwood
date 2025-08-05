@@ -6,6 +6,96 @@
   <title>Whittlin Adi | Wood Carvings & Artwork</title>
   <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.css" />
   <style>
+    <style>
+/* Container for the image zoom on desktop */
+.zoom-container {
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-in;
+  width: 300px; /* adjust as needed */
+  height: 200px;
+}
+
+.zoom-image {
+  transition: transform 0.3s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Zoom effect only on desktop */
+@media (hover: hover) and (pointer: fine) {
+  .zoom-container:hover .zoom-image {
+    cursor: zoom-in;
+  }
+}
+
+/* Lightbox for mobile and desktop */
+#lightbox {
+  display: none;
+  position: fixed;
+  top:0; left:0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  cursor: zoom-out;
+}
+</style>
+
+<div class="zoom-container">
+  <img src="your-image.jpg" alt="Zoomable" class="zoom-image" id="zoomable-img" />
+</div>
+
+<div id="lightbox">
+  <img src="" alt="Zoomed Image" id="lightbox-img" />
+</div>
+
+<script>
+const zoomImage = document.getElementById('zoomable-img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+// Desktop zoom on hover (interactive zoom)
+if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  const zoomLevel = 2; // zoom multiplier
+
+  zoomImage.addEventListener('mousemove', e => {
+    const rect = zoomImage.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const xPercent = (x / rect.width) * 100;
+    const yPercent = (y / rect.height) * 100;
+
+    zoomImage.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+    zoomImage.style.transform = `scale(${zoomLevel})`;
+  });
+
+  zoomImage.addEventListener('mouseleave', () => {
+    zoomImage.style.transform = 'scale(1)';
+    zoomImage.style.transformOrigin = 'center center';
+  });
+}
+
+// For all devices: click to open lightbox with zoomed image
+zoomImage.addEventListener('click', () => {
+  lightboxImg.src = zoomImage.src;
+  lightbox.style.display = 'flex';
+});
+
+// Close lightbox on click anywhere
+lightbox.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+});
+</script>
+
     /* Reset & base */
     * {
       box-sizing: border-box;
@@ -592,9 +682,14 @@
     observer.observe(el);
   });
 </script>
+  
+<div id="lightbox">
+  <img src="" alt="Zoomed Image" id="lightbox-img" />
+</div>
 
 </body>
 </html>
+
 
 
 
