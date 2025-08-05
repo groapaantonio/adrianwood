@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery | Whittlin Adi</title>
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.css" />
+  <style>
+    /* Include the same CSS styles you have for gallery items from main page */
+    /* You can copy styles related to body, header, nav, gallery, gallery-item, buttons, etc. */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #faf7f1;
+      color: #3a2c1e;
+      margin: 0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    header {
+      background-color: #7d5a4f;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      margin: 0 0 0.25rem 0;
+      font-weight: 700;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+    nav {
+      background-color: #a68c6d;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0;
+      box-shadow: inset 0 -3px 4px #7d5a4f;
+    }
+    nav a {
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover {
+      background-color: #7d5a4f;
+    }
+
+    .section {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .section h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      border-bottom: 3px solid #7d5a4f;
+      padding-bottom: 0.25rem;
+      margin-bottom: 1rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .gallery-item {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .gallery-item-content {
+      padding: 1rem;
+    }
+    .gallery-item-content h3 {
+      margin: 0 0 0.5rem 0;
+      font-weight: 600;
+      color: #7d5a4f;
+    }
+    .gallery-item-content p {
+      margin: 0 0 1rem 0;
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .gallery-item-content button {
+      background-color: #7d5a4f;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+    .gallery-item-content button:hover {
+      background-color: #5a3f36;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Whittlin Adi</h1>
+    <p>Rustic Wood Carvings & Timeless Artwork</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="gallery.html" aria-current="page">Gallery</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#shop">Shop</a>
+    <a href="index.html#commission">Commission</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+
+  <section class="section" aria-label="Gallery of wood carvings and artwork">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <!-- Copy your gallery items here from main page -->
+      <div class="gallery-item">
+        <img src="art1.jpg" alt="Mother and Baby wood carving" />
+        <div class="gallery-item-content">
+          <h3>Mother and Baby</h3>
+          <p>Beautiful wood carving of a mother holding her baby.</p>
+          <button
+            class="snipcart-add-item"
+            data-item-id="carving-1"
+            data-item-name="Mother and Baby"
+            data-item-price="119.99"
+            data-item-url="https://groapaantonio.github.io/adrianwood/"
+            data-item-description="Beautiful wood carving of a mother holding her baby."
+          >
+            Add to cart
+          </button>
+        </div>
+      </div>
+      <!-- Add other gallery items similarly -->
+    </div>
+  </section>
+
+  <script src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"></script>
+  <div hidden id="snipcart" data-api-key="OTQ4ZTNkM2EtMzcwMy00ZTk2LTgxMTctZDUxMjc0NzJmYTQzNjM4ODk5MTYwNzQ4MTIzMDcz"></div>
+</body>
+</html>
