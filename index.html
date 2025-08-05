@@ -49,43 +49,48 @@
 </style>
 
 <script>
-const zoomImage = document.getElementById('zoomable-img');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
+document.addEventListener("DOMContentLoaded", function () {
+  const zoomImage = document.getElementById('zoomable-img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
 
-// Desktop zoom on hover (interactive zoom)
-if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-  const zoomLevel = 2; // zoom multiplier
+  if (!zoomImage) return;
 
-  zoomImage.addEventListener('mousemove', e => {
-    const rect = zoomImage.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+  // Desktop zoom on hover
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    const zoomLevel = 2;
 
-    const xPercent = (x / rect.width) * 100;
-    const yPercent = (y / rect.height) * 100;
+    zoomImage.addEventListener('mousemove', e => {
+      const rect = zoomImage.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-    zoomImage.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-    zoomImage.style.transform = `scale(${zoomLevel})`;
+      const xPercent = (x / rect.width) * 100;
+      const yPercent = (y / rect.height) * 100;
+
+      zoomImage.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+      zoomImage.style.transform = `scale(${zoomLevel})`;
+    });
+
+    zoomImage.addEventListener('mouseleave', () => {
+      zoomImage.style.transform = 'scale(1)';
+      zoomImage.style.transformOrigin = 'center center';
+    });
+  }
+
+  // Click to open lightbox
+  zoomImage.addEventListener('click', () => {
+    lightboxImg.src = zoomImage.src;
+    lightbox.style.display = 'flex';
   });
 
-  zoomImage.addEventListener('mouseleave', () => {
-    zoomImage.style.transform = 'scale(1)';
-    zoomImage.style.transformOrigin = 'center center';
+  // Click to close lightbox
+  lightbox.addEventListener('click', () => {
+    lightbox.style.display = 'none';
   });
-}
-
-// For all devices: click to open lightbox with zoomed image
-zoomImage.addEventListener('click', () => {
-  lightboxImg.src = zoomImage.src;
-  lightbox.style.display = 'flex';
-});
-
-// Close lightbox on click anywhere
-lightbox.addEventListener('click', () => {
-  lightbox.style.display = 'none';
 });
 </script>
+
 
     /* Reset & base */
     * {
@@ -687,6 +692,7 @@ lightbox.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 
 
