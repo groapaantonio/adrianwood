@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Whittlin Adi | Product Details</title>
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #faf7f1;
+      color: #3a2c1e;
+      margin: 2rem 1rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    a {
+      color: #7d5a4f;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+    }
+    h1 {
+      color: #7d5a4f;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    .price {
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+    button {
+      background-color: #7d5a4f;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #5a3f36;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="gallery.html">&larr; Back to Gallery</a>
+
+  <div id="product-detail">
+    <!-- Product info will be injected here -->
+  </div>
+
+  <script src="products.js"></script>
+  <script>
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    const productId = getQueryParam('id');
+    const product = products.find(p => p.id === productId);
+
+    const container = document.getElementById('product-detail');
+
+    if (!product) {
+      container.innerHTML = '<p>Sorry, product not found.</p>';
+    } else {
+      container.innerHTML = `
+        <h1>${product.name}</h1>
+        <img src="${product.image}" alt="${product.name}" />
+        <p class="price">€${product.price.toFixed(2)}</p>
+        <p>${product.description}</p>
+        <button 
+          class="snipcart-add-item"
+          data-item-id="${product.id}"
+          data-item-name="${product.name}"
+          data-item-price="${product.price}"
+          data-item-url="${window.location.href}"
+          data-item-description="${product.description}">
+          Add to cart
+        </button>
+      `;
+    }
+  </script>
+
+  <script src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"></script>
+  <div hidden id="snipcart" data-api-key="OTQ4ZTNkM2EtMzcwMy00ZTk2LTgxMTctZDUxMjc0NzJmYTQzNjM4ODk5MTYwNzQ4MTIzMDcz"></div>
+</body>
+</html>
