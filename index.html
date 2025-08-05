@@ -295,6 +295,26 @@
   opacity: 1;
   transform: translateY(0);
 }
+.zoom-container {
+  overflow: hidden;
+  width: 100%; /* or fixed size like 300px if you want */
+  max-width: 300px; /* optional max width */
+  height: 300px; /* or auto if you want variable height */
+  margin: 10px auto; /* center & spacing */
+  display: block;
+  cursor: zoom-in;
+}
+
+.zoom-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.zoom-container:hover .zoom-image {
+  transform: scale(1.5);
+}
 
   </style>
 </head>
@@ -327,7 +347,9 @@
     <div class="gallery">
       <!-- Repeat for each artwork -->
       <div class="gallery-item animate-slide-up">
+        <div class="zoom-container">
         <img src="art1.jpg" alt="Mother and Baby wood carving" />
+          </div>
         <div class="gallery-item-content">
           <h3>Mother and Baby €119.99</h3>
           <p>Beautiful wood carving of a mother holding her baby.</p>
@@ -345,7 +367,9 @@
       </div>
 
       <div class="gallery-item animate-slide-up">
+        <div class="zoom-container">
         <img src="art2.jpg" alt="Crashing Waves wood carving" />
+          </div>
         <div class="gallery-item-content">
           <h3>Crashing Waves €499.99</h3>
           <p>Wood carving of a large boat crashing against strong waves.</p>
@@ -363,7 +387,9 @@
       </div>
 
       <div class="gallery-item animate-slide-up">
+        <div class="zoom-container">
         <img src="art3.jpg" alt="Man's Best Friend wood carving" />
+           </div>
         <div class="gallery-item-content">
           <h3>Man's Best Friend €479.99</h3>
           <p>Wood carving of a man playing the violin with his beloved companion.</p>
@@ -381,7 +407,9 @@
       </div>
 
       <div class="gallery-item animate-slide-up">
+         <div class="zoom-container">
         <img src="art5.jpg" alt="Cottage" />
+            </div>
         <div class="gallery-item-content">
           <h3>Man's Cottage €199.99</h3>
           <p>Wood carving of a humble cottage.</p>
@@ -399,7 +427,9 @@
       </div>
 
       <div class="gallery-item animate-slide-up">
+        <div class="zoom-container">
         <img src="art6.jpg" alt="Praying Hands" />
+          </div>
         <div class="gallery-item-content">
           <h3>Praying Hands €349.99</h3>
           <p>Wood carving of hands praying.</p>
@@ -417,7 +447,9 @@
       </div>
 
       <div class="gallery-item animate-slide-up">
+        <div class="zoom-container">
         <img src="art7.jpg" alt="Old Man" />
+          </div>
         <div class="gallery-item-content">
           <h3>Old Man €479.99</h3>
           <p>Wood carving of an old man sitting and thinking.</p>
@@ -435,7 +467,9 @@
       </div>
 
       <div class="gallery-item animate-slide-up">
+        <div class="zoom-container">
         <img src="art8.jpg" alt="Stumbling Man" />
+           </div>
         <div class="gallery-item-content">
           <h3>Stumbling Man €499.99</h3>
           <p>Wood carving of a man holding onto a post.</p>
@@ -453,7 +487,9 @@
       </div>
 
       <div class="gallery-item animate-slide-up">
+        <div class="zoom-container">
         <img src="art9.jpg" alt="Yellow Bird" />
+           </div>
         <div class="gallery-item-content">
           <h3>Yellow Bird €129.99</h3>
           <p>Wood painting of a yellow bird perched on a branch.</p>
@@ -559,6 +595,7 @@
 
 </body>
 </html>
+
 
 
 
