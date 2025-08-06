@@ -217,6 +217,7 @@
     { filename: "gallery20.jpg", name: "My Heart is an Open Book (Large)", price: 200 }
   ];
 
+document.addEventListener("DOMContentLoaded", () => {
   const gallery = document.getElementById("gallery");
 
 galleryData.forEach((item, index) => {
@@ -242,15 +243,17 @@ galleryData.forEach((item, index) => {
 
   gallery.appendChild(container);
 });
-
+});
+    
 document.addEventListener('snipcart.ready', () => {
   if (window.Snipcart) {
-    window.Snipcart.api.cart.reload();
-  }
+   window.Snipcart.api('refresh');
+ }
 });
 
 
 </script>
+
 
 
 
