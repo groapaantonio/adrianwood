@@ -219,7 +219,7 @@
 
 document.addEventListener('snipcart.ready', () => {
   const gallery = document.getElementById("gallery");
-  
+
   galleryData.forEach((item, index) => {
     const container = document.createElement("div");
     container.classList.add("item");
@@ -244,10 +244,13 @@ document.addEventListener('snipcart.ready', () => {
     gallery.appendChild(container);
   });
 
-  // Tell Snipcart to scan the new buttons
+  // Important: Tell Snipcart to re-scan for dynamically added buttons
   window.Snipcart.api('refresh');
 });
 
+  </script>
+</body>
+</html>
 
 
 
