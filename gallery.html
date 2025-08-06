@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.css" />
+<script async src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"></script>
+<div hidden id="snipcart" data-api-key="OTQ4ZTNkM2EtMzcwMy00ZTk2LTgxMTctZDUxMjc0NzJmYTQzNjM4ODk5MTYwNzQ4MTIzMDcz"></div>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Art Gallery - Whittlin Adi</title>
@@ -170,116 +174,55 @@
   </footer>
 
   <script>
-    const galleryData = [
-      { filename: "gallery1.jpg", name: "Tranquility", price: "€100" },
-      { filename: "gallery2.jpg", name: "Sebiu", price: "€100" },
-      { filename: "gallery3.jpg", name: "Praying Hands", price: "€349" },
-      { filename: "gallery4.jpg", name: "Man's Best Friend", price: "€479.99" },
-      { filename: "gallery5.jpg", name: "Blue Bike and Door", price: "€80" },
-      { filename: "gallery6.jpg", name: "Singing Bird", price: "€50" },
-      { filename: "gallery7.jpg", name: "Wooden Church", price: "€200" },
-      { filename: "gallery8.jpg", name: "Old Man in the Storm", price: "€500" },
-      { filename: "gallery9.jpg", name: "Blue Bird with Yellow Flower", price: "€80" },
-      { filename: "gallery10.jpg", name: "Woodland Deer", price: "€45" },
-      { filename: "gallery11.jpg", name: "Praying Hands", price: "€200" },
-      { filename: "gallery12.jpg", name: "Forest Fox", price: "€40" },
-      { filename: "gallery13.jpg", name: "Bird in Flight", price: "€80" },
-      { filename: "gallery14.jpg", name: "Poppies on the Mountain", price: "€80" },
-      { filename: "gallery15.jpg", name: "Tranquil Village", price: "€100" },
-      { filename: "gallery16.jpg", name: "Alone with the Cat", price: "€150" },
-      { filename: "gallery17.jpg", name: "Porta 6", price: "€150" },
-      { filename: "gallery18.jpg", name: "Lone Bird", price: "€80" },
-      { filename: "gallery19.jpg", name: "Wooden Church", price: "€200" },
-      { filename: "gallery20.jpg", name: "My Heart is an Open Book (Large)", price: "Large = €200 Medium = €150 Small = €100 (any writing, song, poem etc)" },
-    ];
+  const galleryData = [
+    { filename: "gallery1.jpg", name: "Tranquility", price: 100 },
+    { filename: "gallery2.jpg", name: "Sebiu", price: 100 },
+    { filename: "gallery3.jpg", name: "Praying Hands", price: 349 },
+    { filename: "gallery4.jpg", name: "Man's Best Friend", price: 479.99 },
+    { filename: "gallery5.jpg", name: "Blue Bike and Door", price: 80 },
+    { filename: "gallery6.jpg", name: "Singing Bird", price: 50 },
+    { filename: "gallery7.jpg", name: "Wooden Church", price: 200 },
+    { filename: "gallery8.jpg", name: "Old Man in the Storm", price: 500 },
+    { filename: "gallery9.jpg", name: "Blue Bird with Yellow Flower", price: 80 },
+    { filename: "gallery10.jpg", name: "Woodland Deer", price: 45 },
+    { filename: "gallery11.jpg", name: "Praying Hands", price: 200 },
+    { filename: "gallery12.jpg", name: "Forest Fox", price: 40 },
+    { filename: "gallery13.jpg", name: "Bird in Flight", price: 80 },
+    { filename: "gallery14.jpg", name: "Poppies on the Mountain", price: 80 },
+    { filename: "gallery15.jpg", name: "Tranquil Village", price: 100 },
+    { filename: "gallery16.jpg", name: "Alone with the Cat", price: 150 },
+    { filename: "gallery17.jpg", name: "Porta 6", price: 150 },
+    { filename: "gallery18.jpg", name: "Lone Bird", price: 80 },
+    { filename: "gallery19.jpg", name: "Wooden Church", price: 200 },
+    { filename: "gallery20.jpg", name: "My Heart is an Open Book (Large)", price: 200 }
+  ];
 
-    const gallery = document.getElementById("gallery");
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightboxImg");
-    const lightboxTitle = document.getElementById("lightboxTitle");
-    const closeBtn = document.getElementById("closeBtn");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
+  const gallery = document.getElementById("gallery");
 
-    let currentIndex = 0;
+  galleryData.forEach((item, index) => {
+    const container = document.createElement("div");
+    container.classList.add("item");
 
-    galleryData.forEach((item, i) => {
-      const div = document.createElement("div");
-      div.className = "item";
+    container.innerHTML = `
+      <img src="images/${item.filename}" alt="${item.name}" />
+      <h3>${item.name}</h3>
+      <p class="price">€${item.price}</p>
+      <button 
+        class="snipcart-add-item"
+        data-item-id="gallery-item-${index + 1}"
+        data-item-name="${item.name}"
+        data-item-price="${item.price}"
+        data-item-url="/gallery.html"
+        data-item-description="${item.name} - Hand-carved wood art"
+      >
+        Buy
+      </button>
+    `;
 
-      const img = document.createElement("img");
-      img.src = `images/${item.filename}`;
-      img.alt = item.name;
-      img.dataset.index = i;
+    gallery.appendChild(container);
+  });
+</script>
 
-      img.addEventListener("click", () => openLightbox(i));
-
-      const title = document.createElement("div");
-      title.className = "title";
-      title.textContent = item.name;
-
-      const price = document.createElement("div");
-      price.className = "price";
-      price.textContent = item.price;
-
-      div.appendChild(img);
-      div.appendChild(title);
-      div.appendChild(price);
-      gallery.appendChild(div);
-    });
-
-    function openLightbox(index) {
-      currentIndex = index;
-      const item = galleryData[currentIndex];
-      lightboxImg.src = `images/${item.filename}`;
-      lightboxTitle.textContent = item.name;
-      lightbox.classList.add("active");
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove("active");
-    }
-
-    function showNext() {
-      currentIndex = (currentIndex + 1) % galleryData.length;
-      openLightbox(currentIndex);
-    }
-
-    function showPrev() {
-      currentIndex = (currentIndex - 1 + galleryData.length) % galleryData.length;
-      openLightbox(currentIndex);
-    }
-
-    closeBtn.addEventListener("click", closeLightbox);
-    nextBtn.addEventListener("click", showNext);
-    prevBtn.addEventListener("click", showPrev);
-
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (!lightbox.classList.contains("active")) return;
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowRight") showNext();
-      if (e.key === "ArrowLeft") showPrev();
-    });
-
-    galleryProducts.forEach((product) => {
-  const item = document.createElement("div");
-  item.className = "gallery-item";
-  item.innerHTML = `
-    <img src="${product.image}" alt="${product.name}" />
-    <h3>${product.name}</h3>
-    <p>€${product.price.toFixed(2)}</p>
-    <button onclick='addToCart(${JSON.stringify(product)})'>Add to Cart</button>
-  `;
-  gallery.appendChild(item);
-});
-
-  </script>
-</body>
-</html>
 
 
 
