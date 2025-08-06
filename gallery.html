@@ -9,7 +9,7 @@
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #fdfcf9;
-      color: #333;
+      color: #3a2c1e;
     }
 
     header {
@@ -19,25 +19,57 @@
       padding: 1rem;
     }
 
+    .back-link {
+      display: inline-block;
+      margin: 1rem;
+      background-color: #7d5a4f;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      background-color: #5a3f36;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
+      gap: 20px;
       padding: 2rem;
       max-width: 1200px;
       margin: auto;
     }
 
-    .gallery img {
+    .item {
+      text-align: center;
+    }
+
+    .item img {
       width: 100%;
       height: auto;
       border-radius: 8px;
       cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       transition: transform 0.2s ease;
     }
 
-    .gallery img:hover {
+    .item img:hover {
       transform: scale(1.02);
+    }
+
+    .item .title {
+      font-weight: bold;
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      color: #5c432d;
+    }
+
+    .item .price {
+      font-size: 1rem;
+      color: #7d5a4f;
     }
 
     .lightbox {
@@ -48,7 +80,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.95);
       justify-content: center;
       align-items: center;
       flex-direction: column;
@@ -56,6 +88,12 @@
 
     .lightbox.active {
       display: flex;
+    }
+
+    .lightbox .lightbox-title {
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .lightbox img {
@@ -110,9 +148,11 @@
     <h1>Whittlin Adi – Art Gallery</h1>
   </header>
 
+  <a href="index.html?view=products" class="back-link">← Back to Products</a>
+
   <main>
     <section class="gallery" id="gallery">
-      <!-- Thumbnails -->
+      <!-- Gallery items will be added here -->
     </section>
   </main>
 
@@ -120,6 +160,7 @@
   <div class="lightbox" id="lightbox">
     <span class="close-btn" id="closeBtn">&times;</span>
     <button class="nav-btn prev" id="prevBtn">&#10094;</button>
+    <div class="lightbox-title" id="lightboxTitle"></div>
     <img id="lightboxImg" src="" alt="Artwork" />
     <button class="nav-btn next" id="nextBtn">&#10095;</button>
   </div>
@@ -129,40 +170,58 @@
   </footer>
 
   <script>
-    const imageCount = 20;
+    const galleryData = [
+      { filename: "gallery1.jpg", name: "Woodland Deer", price: "€45" },
+      { filename: "gallery2.jpg", name: "Sunflower Smile", price: "€30" },
+      { filename: "gallery3.jpg", name: "Forest Fox", price: "€40" },
+      { filename: "gallery4.jpg", name: "Bird in Flight", price: "€35" },
+      { filename: "gallery5.jpg", name: "Mountain Bear", price: "€50" },
+      { filename: "gallery6.jpg", name: "Rustic Rose", price: "€25" },
+      { filename: "gallery7.jpg", name: "Shaded Wolf", price: "€48" },
+      { filename: "gallery8.jpg", name: "River Trout", price: "€38" },
+      { filename: "gallery9.jpg", name: "Pine Forest", price: "€42" },
+    ];
+
     const gallery = document.getElementById("gallery");
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxTitle = document.getElementById("lightboxTitle");
     const closeBtn = document.getElementById("closeBtn");
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
 
     let currentIndex = 0;
-    const imagePaths = [];
 
-    // Use gallery-specific images
-    for (let i = 1; i <= imageCount; i++) {
-      const src = `images/gallery${i}.jpg`;
-      imagePaths.push(src);
+    galleryData.forEach((item, i) => {
+      const div = document.createElement("div");
+      div.className = "item";
 
-      const a = document.createElement("a");
       const img = document.createElement("img");
-      img.src = src;
-      img.alt = `Gallery Artwork ${i}`;
-      img.dataset.index = i - 1;
+      img.src = `images/${item.filename}`;
+      img.alt = item.name;
+      img.dataset.index = i;
 
-      a.appendChild(img);
-      a.addEventListener("click", (e) => {
-        e.preventDefault();
-        openLightbox(i - 1);
-      });
+      img.addEventListener("click", () => openLightbox(i));
 
-      gallery.appendChild(a);
-    }
+      const title = document.createElement("div");
+      title.className = "title";
+      title.textContent = item.name;
+
+      const price = document.createElement("div");
+      price.className = "price";
+      price.textContent = item.price;
+
+      div.appendChild(img);
+      div.appendChild(title);
+      div.appendChild(price);
+      gallery.appendChild(div);
+    });
 
     function openLightbox(index) {
       currentIndex = index;
-      lightboxImg.src = imagePaths[currentIndex];
+      const item = galleryData[currentIndex];
+      lightboxImg.src = `images/${item.filename}`;
+      lightboxTitle.textContent = item.name;
       lightbox.classList.add("active");
     }
 
@@ -171,25 +230,23 @@
     }
 
     function showNext() {
-      currentIndex = (currentIndex + 1) % imagePaths.length;
-      lightboxImg.src = imagePaths[currentIndex];
+      currentIndex = (currentIndex + 1) % galleryData.length;
+      openLightbox(currentIndex);
     }
 
     function showPrev() {
-      currentIndex = (currentIndex - 1 + imagePaths.length) % imagePaths.length;
-      lightboxImg.src = imagePaths[currentIndex];
+      currentIndex = (currentIndex - 1 + galleryData.length) % galleryData.length;
+      openLightbox(currentIndex);
     }
 
     closeBtn.addEventListener("click", closeLightbox);
     nextBtn.addEventListener("click", showNext);
     prevBtn.addEventListener("click", showPrev);
 
-    // Click outside to close
     lightbox.addEventListener("click", (e) => {
       if (e.target === lightbox) closeLightbox();
     });
 
-    // Keyboard navigation
     document.addEventListener("keydown", (e) => {
       if (!lightbox.classList.contains("active")) return;
       if (e.key === "Escape") closeLightbox();
