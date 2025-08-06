@@ -3,7 +3,6 @@
 <head>
 <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.css" />
 <script async src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"></script>
-<div hidden id="snipcart" data-api-key="OTQ4ZTNkM2EtMzcwMy00ZTk2LTgxMTctZDUxMjc0NzJmYTQzNjM4ODk5MTYwNzQ4MTIzMDcz"></div>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -143,6 +142,7 @@
       padding: 1rem;
       background-color: #eae4dc;
       color: #555;
+    }
     
   .buy-button {
     background-color: #8B4513;
@@ -162,6 +162,7 @@
     }
   </style>
 </head>
+  <div hidden id="snipcart" data-api-key="OTQ4ZTNkM2EtMzcwMy00ZTk2LTgxMTctZDUxMjc0NzJmYTQzNjM4ODk5MTYwNzQ4MTIzMDcz"></div>
 <body>
 
   <header>
@@ -222,13 +223,13 @@
     container.innerHTML = `
       <img src="images/${item.filename}" alt="${item.name}" />
       <h3>${item.name}</h3>
-      <p class="price">€${item.price}</p>
+      <p class="price">${item.price}</p>
       <button 
         class="snipcart-add-item"
         data-item-id="gallery-item-${index + 1}"
         data-item-name="${item.name}"
         data-item-price="${item.price}"
-        data-item-url="/gallery.html"
+        data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
         data-item-description="${item.name} - Hand-carved wood art"
       >
         Buy
@@ -238,6 +239,7 @@
     gallery.appendChild(container);
   });
 </script>
+
 
 
 
