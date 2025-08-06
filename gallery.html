@@ -193,67 +193,309 @@
     &copy; 2025 Whittlin Adi. All rights reserved.
   </footer>
 
-  <script>
-  const galleryData = [
-    { filename: "gallery1.jpg", name: "Tranquility", price: 100 },
-    { filename: "gallery2.jpg", name: "Sebiu", price: 100 },
-    { filename: "gallery3.jpg", name: "Praying Hands", price: 349 },
-    { filename: "gallery4.jpg", name: "Man's Best Friend", price: 479.99 },
-    { filename: "gallery5.jpg", name: "Blue Bike and Door", price: 80 },
-    { filename: "gallery6.jpg", name: "Singing Bird", price: 50 },
-    { filename: "gallery7.jpg", name: "Wooden Church", price: 200 },
-    { filename: "gallery8.jpg", name: "Old Man in the Storm", price: 500 },
-    { filename: "gallery9.jpg", name: "Blue Bird with Yellow Flower", price: 80 },
-    { filename: "gallery10.jpg", name: "Woodland Deer", price: 45 },
-    { filename: "gallery11.jpg", name: "Praying Hands", price: 200 },
-    { filename: "gallery12.jpg", name: "Forest Fox", price: 40 },
-    { filename: "gallery13.jpg", name: "Bird in Flight", price: 80 },
-    { filename: "gallery14.jpg", name: "Poppies on the Mountain", price: 80 },
-    { filename: "gallery15.jpg", name: "Tranquil Village", price: 100 },
-    { filename: "gallery16.jpg", name: "Alone with the Cat", price: 150 },
-    { filename: "gallery17.jpg", name: "Porta 6", price: 150 },
-    { filename: "gallery18.jpg", name: "Lone Bird", price: 80 },
-    { filename: "gallery19.jpg", name: "Wooden Church", price: 200 },
-    { filename: "gallery20.jpg", name: "My Heart is an Open Book (Large)", price: 200 }
-  ];
+<div class="item">
+  <img src="images/gallery1.jpg" alt="Tranquility" />
+  <h3>Tranquility</h3>
+  <p class="price">€100.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-1"
+    data-item-name="Tranquility"
+    data-item-price="100"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Tranquility - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery1.jpg"
+  >Buy</button>
+</div>
 
- document.addEventListener('DOMContentLoaded', () => {
-    const gallery = document.getElementById("gallery");
+<div class="item">
+  <img src="images/gallery2.jpg" alt="Sebiu" />
+  <h3>Sebiu</h3>
+  <p class="price">€100.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-2"
+    data-item-name="Sebiu"
+    data-item-price="100"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Sebiu - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery2.jpg"
+  >Buy</button>
+</div>
 
-    galleryData.forEach((item, index) => {
-      const container = document.createElement("div");
-      container.classList.add("item");
+<div class="item">
+  <img src="images/gallery3.jpg" alt="Praying Hands" />
+  <h3>Praying Hands</h3>
+  <p class="price">€349.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-3"
+    data-item-name="Praying Hands"
+    data-item-price="349"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Praying Hands - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery3.jpg"
+  >Buy</button>
+</div>
 
-      container.innerHTML = `
-        <img src="images/${item.filename}" alt="${item.name}" />
-        <h3>${item.name}</h3>
-        <p class="price">€${item.price.toFixed(2)}</p>
-        <button
-          class="snipcart-add-item buy-button"
-          data-item-id="gallery-item-${index + 1}"
-          data-item-name="${item.name}"
-          data-item-price="${item.price}"
-          data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
-          data-item-description="${item.name} - Hand-carved wood art"
-          data-item-image="https://groapaantonio.github.io/adrianwood/images/${item.filename}"
-        >
-          Buy
-        </button>
-      `;
+<div class="item">
+  <img src="images/gallery4.jpg" alt="Man's Best Friend" />
+  <h3>Man's Best Friend</h3>
+  <p class="price">€479.99</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-4"
+    data-item-name="Man's Best Friend"
+    data-item-price="479.99"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Man's Best Friend - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery4.jpg"
+  >Buy</button>
+</div>
 
-      gallery.appendChild(container);
-    });
+<div class="item">
+  <img src="images/gallery5.jpg" alt="Blue Bike and Door" />
+  <h3>Blue Bike and Door</h3>
+  <p class="price">€80.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-5"
+    data-item-name="Blue Bike and Door"
+    data-item-price="80"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Blue Bike and Door - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery5.jpg"
+  >Buy</button>
+</div>
 
-    // Wait a moment, then refresh Snipcart so it sees the new buttons
-    setTimeout(() => {
-      if (window.Snipcart) {
-        window.Snipcart.api('refresh');
-      }
-    }, 500);
-  });
-</script>
+<div class="item">
+  <img src="images/gallery6.jpg" alt="Singing Bird" />
+  <h3>Singing Bird</h3>
+  <p class="price">€50.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-6"
+    data-item-name="Singing Bird"
+    data-item-price="50"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Singing Bird - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery6.jpg"
+  >Buy</button>
+</div>
+
+<div class="item">
+  <img src="images/gallery7.jpg" alt="Wooden Church" />
+  <h3>Wooden Church</h3>
+  <p class="price">€200.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-7"
+    data-item-name="Wooden Church"
+    data-item-price="200"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Wooden Church - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery7.jpg"
+  >Buy</button>
+</div>
+
+<div class="item">
+  <img src="images/gallery8.jpg" alt="Old Man in the Storm" />
+  <h3>Old Man in the Storm</h3>
+  <p class="price">€500.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-8"
+    data-item-name="Old Man in the Storm"
+    data-item-price="500"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Old Man in the Storm - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery8.jpg"
+  >Buy</button>
+</div>
+
+<div class="item">
+  <img src="images/gallery9.jpg" alt="Blue Bird with Yellow Flower" />
+  <h3>Blue Bird with Yellow Flower</h3>
+  <p class="price">€80.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-9"
+    data-item-name="Blue Bird with Yellow Flower"
+    data-item-price="80"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Blue Bird with Yellow Flower - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery9.jpg"
+  >Buy</button>
+</div>
+
+<div class="item">
+  <img src="images/gallery10.jpg" alt="Woodland Deer" />
+  <h3>Woodland Deer</h3>
+  <p class="price">€45.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-10"
+    data-item-name="Woodland Deer"
+    data-item-price="45"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Woodland Deer - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery10.jpg"
+  >Buy</button>
+</div>
+
+<div class="item">
+  <img src="images/gallery11.jpg" alt="Praying Hands" />
+  <h3>Praying Hands</h3>
+  <p class="price">€200.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-11"
+    data-item-name="Praying Hands"
+    data-item-price="200"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Praying Hands - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery11.jpg"
+  >Buy</button>
+</div>
+
+<div class="item">
+  <img src="images/gallery12.jpg" alt="Forest Fox" />
+  <h3>Forest Fox</h3>
+  <p class="price">€40.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-12"
+    data-item-name="Forest Fox"
+    data-item-price="40"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Forest Fox - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery12.jpg"
+  >Buy</button>
+</div>
+
+<div class="item">
+  <img src="images/gallery13.jpg" alt="Bird in Flight" />
+  <h3>Bird in Flight</h3>
+  <p class="price">€80.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-13"
+    data-item-name="Bird in Flight"
+    data-item-price="80"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Bird in Flight - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery13.jpg"
+  >Buy</button>
+</div>
+
+<div class="item">
+  <img src="images/gallery14.jpg" alt="Poppies on the Mountain" />
+  <h3>Poppies on the Mountain</h3>
+  <p class="price">€80.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-14"
+    data-item-name="Poppies on the Mountain"
+    data-item-price="80"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Poppies on the Mountain - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery14.jpg"
+  >Buy</button>
+</div>
+
+<div class="item">
+  <img src="images/gallery15.jpg" alt="Tranquil Village" />
+  <h3>Tranquil Village</h3>
+  <p class="price">€100.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-15"
+    data-item-name="Tranquil Village"
+    data-item-price="100"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Tranquil Village - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery15.jpg"
+  >Buy</button>
+</div>
+
+<div class="item">
+  <img src="images/gallery16.jpg" alt="Alone with the Cat" />
+  <h3>Alone with the Cat</h3>
+  <p class="price">€150.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-16"
+    data-item-name="Alone with the Cat"
+    data-item-price="150"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Alone with the Cat - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery16.jpg"
+  >Buy</button>
+</div>
+
+<div class="item">
+  <img src="images/gallery17.jpg" alt="Porta 6" />
+  <h3>Porta 6</h3>
+  <p class="price">€150.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-17"
+    data-item-name="Porta 6"
+    data-item-price="150"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Porta 6 - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery17.jpg"
+  >Buy</button>
+</div>
+
+<div class="item">
+  <img src="images/gallery18.jpg" alt="Lone Bird" />
+  <h3>Lone Bird</h3>
+  <p class="price">€80.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-18"
+    data-item-name="Lone Bird"
+    data-item-price="80"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Lone Bird - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery18.jpg"
+  >Buy</button>
+</div>
+
+<div class="item">
+  <img src="images/gallery19.jpg" alt="Wooden Church" />
+  <h3>Wooden Church</h3>
+  <p class="price">€200.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-19"
+    data-item-name="Wooden Church"
+    data-item-price="200"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="Wooden Church - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery19.jpg"
+  >Buy</button>
+</div>
+
+<div class="item">
+  <img src="images/gallery20.jpg" alt="My Heart is an Open Book (Large)" />
+  <h3>My Heart is an Open Book (Large)</h3>
+  <p class="price">€200.00</p>
+  <button
+    class="snipcart-add-item buy-button"
+    data-item-id="gallery-item-20"
+    data-item-name="My Heart is an Open Book (Large)"
+    data-item-price="200"
+    data-item-url="https://groapaantonio.github.io/adrianwood/gallery.html"
+    data-item-description="My Heart is an Open Book (Large) - Hand-carved wood art"
+    data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery20.jpg"
+  >Buy</button>
+</div>
+
 </body>
 </html>
+
 
 
 
