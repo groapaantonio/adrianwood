@@ -243,7 +243,14 @@ galleryData.forEach((item, index) => {
   gallery.appendChild(container);
 });
 
+    
+    if (window.Snipcart) {
+  window.Snipcart.api.cart.reload();
+}
+
+
 </script>
+
 
 
 
