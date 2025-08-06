@@ -243,13 +243,15 @@ galleryData.forEach((item, index) => {
   gallery.appendChild(container);
 });
 
-    
-    if (window.Snipcart) {
-  window.Snipcart.api.cart.reload();
-}
+document.addEventListener('snipcart.ready', () => {
+  if (window.Snipcart) {
+    window.Snipcart.api.cart.reload();
+  }
+});
 
 
 </script>
+
 
 
 
