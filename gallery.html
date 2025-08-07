@@ -192,7 +192,8 @@
   <footer>
     &copy; 2025 Whittlin Adi. All rights reserved.
   </footer>
-
+  
+  <section class="gallery" id="gallery">
 <div class="item">
   <img src="images/gallery1.jpg" alt="Tranquility" />
   <h3>Tranquility</h3>
@@ -492,9 +493,77 @@
     data-item-image="https://groapaantonio.github.io/adrianwood/images/gallery20.jpg"
   >Buy</button>
 </div>
+  </section>
+
+  <script>
+  const gallery = document.getElementById('gallery');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const closeBtn = document.getElementById('closeBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  let currentIndex = 0;
+  let items;
+
+  function openLightbox(index) {
+    const item = items[index];
+    const img = item.querySelector('img');
+    const title = item.querySelector('h3').innerText;
+
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightboxTitle.textContent = title;
+    lightbox.classList.add('active');
+    currentIndex = index;
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    openLightbox(currentIndex);
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % items.length;
+    openLightbox(currentIndex);
+  }
+
+  // Initialize
+  items = gallery.querySelectorAll('.item');
+
+  items.forEach((item, index) => {
+    item.querySelector('img').addEventListener('click', () => {
+      openLightbox(index);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  prevBtn.addEventListener('click', showPrev);
+  nextBtn.addEventListener('click', showNext);
+
+  // Close lightbox on click outside image
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Optional: close on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      closeLightbox();
+    }
+  });
+</script>
 
 </body>
 </html>
+
 
 
 
